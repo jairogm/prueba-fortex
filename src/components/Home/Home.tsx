@@ -20,7 +20,7 @@ import GroupCard from "../GroupCard";
 //styles
 import "./Home.css";
 import AddGroup from "../Dialogs/AddGroup";
-import { displayPartsToString } from "typescript";
+
 
 export default function Home() {
   const API_URL = "https://demo-api-work-test.herokuapp.com";
@@ -34,7 +34,7 @@ export default function Home() {
   } = useContext(GroupContext) as GroupContextType;
 
   const getGroupList = () => {
-    const accessToken = JSON.parse(localStorage.getItem("token") || "");
+    const accessToken = JSON.parse(localStorage.getItem("token") || "{}");
     return axios
       .get<GroupResponseApi>(API_URL + "/group", {
         headers: {

@@ -14,20 +14,20 @@ const login = (email: User["email"], password: User["password"]) => {
     })
     .then((response) => {
       if (response.data.token) {
-        localStorage.setItem("user", JSON.stringify(response.data));
+        localStorage.setItem("token", JSON.stringify(response.data.token));
       }
       return response.data;
     });
 };
 
 const logout = () => {
-  localStorage.removeItem("user");
+  localStorage.removeItem("token");
 };
 
 const getCurrentUser = () => {
   const currentUser =
-    localStorage.getItem("user") != null &&
-    JSON.parse(localStorage.getItem("user") || "");
+    localStorage.getItem("token") != null &&
+    JSON.parse(localStorage.getItem("token") || "{}");
   return currentUser;
 };
 
